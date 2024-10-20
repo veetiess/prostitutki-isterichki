@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>prostitutki-isterichki.com</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="form1">
+        <h2 class="whore_name1">КУНИМЕН</h2>
+    </div>
+    <h2 class="service">сделает вам куни</h2>
+
+    <div class="counter-container">
+        <button class="counter-btn decrease" data-id="1">-</button>
+        <div class="counter-value" id="counter-1">0</div>
+        <button class="counter-btn increase" data-id="1">+</button>
+    
+        <div class="price-container">
+            <span class="new-price" id="total-price-1">0₽</span>
+        </div>
+    </div>
+    <h2 class="service">примет золотой дождь от вас</h2>
+    <div class="counter-container">
+        <button class="counter-btn decrease" data-id="2">-</button>
+        <div class="counter-value" id="counter-2">0</div>
+        <button class="counter-btn increase" data-id="2">+</button>
+    
+        <div class="price-container">
+            <span class="new-price" id="total-price-2">0₽</span>
+        </div>
+    </div>
+    <h2 class="service">полижет вам ножки</h2>
+    <div class="counter-container">
+        <button class="counter-btn decrease" data-id="3">-</button>
+        <div class="counter-value" id="counter-3">0</div>
+        <button class="counter-btn increase" data-id="3">+</button>
+    
+        <div class="price-container">
+            <span class="new-price" id="total-price-3">0₽</span>
+        </div>
+    </div>
+    <h2 class="service">пососёт вам сиси</h2>
+    <div class="counter-container">
+        <button class="counter-btn decrease" data-id="4">-</button>
+        <div class="counter-value" id="counter-4">0</div>
+        <button class="counter-btn increase" data-id="4">+</button>
+    
+        <div class="price-container">
+            <span class="new-price" id="total-price-4">0₽</span>
+        </div>
+    </div>
+    <h2 class="service">проебёт пизду</h2>
+    <div class="counter-container">
+        <button class="counter-btn decrease" data-id="5">-</button>
+        <div class="counter-value" id="counter-5">0</div>
+        <button class="counter-btn increase" data-id="5">+</button>
+    
+        <div class="price-container">
+            <span class="new-price" id="total-price-5">0₽</span>
+        </div>
+        </div>
+        <h2 class="service">проебёт жопу</h2>
+        <div class="counter-container">
+            <button class="counter-btn decrease" data-id="6">-</button>
+            <div class="counter-value" id="counter-6">0</div>
+            <button class="counter-btn increase" data-id="6">+</button>
+        
+            <div class="price-container">
+                <span class="new-price" id="total-price-6">0₽</span>
+            </div>
+            </div>
+        <h2 class="service">проебёт анус</h2>
+        <div class="counter-container">
+            <button class="counter-btn decrease" data-id="7">-</button>
+            <div class="counter-value" id="counter-7">0</div>
+            <button class="counter-btn increase" data-id="7">+</button>
+            
+            <div class="price-container">
+                <span class="new-price" id="total-price-7">0₽</span>
+            </div>
+            </div>
+
+        <h2 class="service">иррумация</h2>
+        <div class="counter-container">
+            <button class="counter-btn decrease" data-id="8">-</button>
+            <div class="counter-value" id="counter-8">0</div>
+            <button class="counter-btn increase" data-id="8">+</button>
+            
+            <div class="price-container">
+                <span class="new-price" id="total-price-8">0₽</span>
+            </div>
+            </div>
+
+        <h2 class="service">примет страпон</h2>
+        <div class="counter-container">
+            <button class="counter-btn decrease" data-id="9">-</button>
+            <div class="counter-value" id="counter-9">0</div>
+            <button class="counter-btn increase" data-id="9">+</button>
+            
+            <div class="price-container">
+                    <span class="new-price" id="total-price-9">0₽</span>
+            </div>
+            </div>    
+                
+    </div>
+    <script>
+     const prices = {
+    1: 2030,
+    2: 1089,
+    3: 3438,
+    4: 2936,
+    5: 1570,
+    6: 2367,
+    7: 4217,
+    8: 1044,
+    9: 1918
+}; // Цена за единицу товара
+
+document.querySelectorAll('.counter-btn').forEach(button => {
+    button.addEventListener('click', (event) => {
+        const id = event.target.getAttribute('data-id');
+        const counterElement = document.getElementById(`counter-${id}`);
+        const totalPriceElement = document.getElementById(`total-price-${id}`);
+        let count = parseInt(counterElement.textContent);
+
+        if (event.target.classList.contains('increase')) {
+            count++;
+        } else if (event.target.classList.contains('decrease') && count > 0) {
+            count--;
+        }
+
+        counterElement.textContent = count;
+        const total = count * prices[id];
+        totalPriceElement.textContent = `${total}₽`;
+        calculateTotal();
+    });
+});
+
+function calculateTotal() {
+    // Цены для каждого товара
+    const prices = [2030, 1089, 3438, 2936, 1570, 2367, 4217, 1044, 1918];
+    
+    // Получаем значения счётчиков
+    let counter1 = parseInt(document.getElementById('counter-1').textContent) || 0;
+    let counter2 = parseInt(document.getElementById('counter-2').textContent) || 0;
+    let counter3 = parseInt(document.getElementById('counter-3').textContent) || 0;
+    let counter4 = parseInt(document.getElementById('counter-4').textContent) || 0;
+    let counter5 = parseInt(document.getElementById('counter-5').textContent) || 0;
+    let counter6 = parseInt(document.getElementById('counter-6').textContent) || 0;
+    let counter7 = parseInt(document.getElementById('counter-7').textContent) || 0;
+    let counter8 = parseInt(document.getElementById('counter-8').textContent) || 0;
+    let counter9 = parseInt(document.getElementById('counter-9').textContent) || 0;
+
+    // Вычисляем общую сумму
+    let total = (counter1 * prices[0]) +
+                (counter2 * prices[1]) +
+                (counter3 * prices[2]) +
+                (counter4 * prices[3]) +
+                (counter5 * prices[4]) +
+                (counter6 * prices[5]) +
+                (counter7 * prices[6]) +
+                (counter8 * prices[7]) +
+                (counter9 * prices[8]);
+    
+    // Обновляем сумму на странице
+    document.getElementById('totalAmount').innerText = total;
+}
+    </script>
+    <div class="allkunimen">
+    <div class="datekunimen">
+        <h2>дата</h2>
+        <input class="inputdate" type="date">
+        <p class="address_client_serik">оставьте свой адрес:</p>
+    <input class="address_input"type="text">
+    <button class="submit_button">сохранить</button>
+    </div>
+    </div>
+    <div class="totaltotalkunimen">
+    <h3 class="total">Сумма: <span id="totalAmount">0</span>₽</h3>
+    <button class="payment"><a class="paymentlink" href="https://www.donationalerts.com/r/veeties">ОПЛАТИТЬ ЗАКАЗ</a></button>
+    
+</div>
+</body>
+</html>
